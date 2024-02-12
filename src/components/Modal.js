@@ -15,18 +15,18 @@ import Modal from "react-native-modal";
 
 
 
-const ModalContent = ({ modalVisible, setModalVisible }) => {
+const ModalContent = ({ navigation, modalVisible, setModalVisible }) => {
   return (
     <Modal
       visible={modalVisible}
       transparent={true}
-      animationIn="slideInRight" 
-      animationOut="slideOutRight" 
-      animationInTiming={3300} 
-      animationOutTiming={3300} 
+      animationIn="slideInRight"
+      animationOut="slideOutRight"
+      animationInTiming={3300}
+      animationOutTiming={3300}
       style={{ margin: 0, }}
     >
-      <View style={{ backgroundColor: 'black', flex: 1, padding: 13, width: '70%',alignSelf:'flex-end' , height: '100%', opacity: 0.9 }}>
+      <View style={{ backgroundColor: 'black', flex: 1, padding: 13, width: '70%', alignSelf: 'flex-end', height: '100%', opacity: 0.9 }}>
         <TouchableOpacity onPress={() => { setModalVisible(!modalVisible) }} style={{ right: 0, position: 'absolute', padding: 15 }} >
 
           <Cross name='cross' size={30} color='white' />
@@ -93,9 +93,9 @@ const ModalContent = ({ modalVisible, setModalVisible }) => {
             <Text style={styles.textColor}>Setting</Text>
           </TouchableOpacity>
           <Redhr />
-          <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 20, marginVertical: 7 }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Login') }} style={{ flexDirection: 'row', alignItems: 'center', gap: 20, marginVertical: 7 }}>
             <OfferAndLogout name='logout' color='white' size={25} />
-            <Text style={styles.textColor}>Logout</Text>
+            <Text style={styles.textColor} >Logout</Text>
           </TouchableOpacity>
           <Redhr />
         </View>

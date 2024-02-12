@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
               <Eye style={{ position: 'absolute', right: 0, alignSelf: 'center', padding: 5, top: 22, }} color='black' name={showPassword ? 'eye-with-line' : 'eye'} size={25} onPress={() => setShowPassword(!showPassword)}></Eye>
             </View>
 
-            <Text style={{ alignSelf: 'flex-end', paddingHorizontal: 20, color: 'white', fontSize: 16, marginTop: 10 }}>Forgot Password?</Text>
+            <Text style={{ alignSelf: 'flex-end',  color: 'white', fontSize: 16, marginTop: 10 }}>Forgot Password?</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Bottomtabs')} style={{ backgroundColor: '#BF0B30', height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: 'white', fontSize: 16 }} >Login</Text></TouchableOpacity>
             <View style={{ flexDirection: 'row', gap: 3, marginTop: 10 }}>
               <Text style={{ color: 'white', fontSize: 16 }}>Don't have an Account?</Text>

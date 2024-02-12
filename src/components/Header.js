@@ -33,7 +33,7 @@ const Header = ({ navigation, title, arrow }) => {
                 </View>
             </View>
             <View style={{ height: 1, width: '100%', marginHorizontal: 10, borderColor: '#272727', backgroundColor: '#272727', marginBottom: 5 }}></View>
-            {modalVisible && <ModalContent modalVisible={modalVisible} setModalVisible={setModalVisible} />}
+            {modalVisible && <ModalContent navigation={navigation} modalVisible={modalVisible} setModalVisible={setModalVisible} />}
         </View>
     );
 }
