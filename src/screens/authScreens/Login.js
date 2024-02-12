@@ -7,7 +7,7 @@ import Eye from 'react-native-vector-icons/Entypo'
 import EyeOff from 'react-native-vector-icons/Entypo'
 const Login = ({ navigation }) => {
   const height = useHeaderHeight()
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(true)
 
   return (
 
