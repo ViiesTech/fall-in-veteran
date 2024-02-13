@@ -10,12 +10,14 @@ import EventIcon from 'react-native-vector-icons/FontAwesome'
 import ShopIcon from 'react-native-vector-icons/Fontisto'
 import MyDrawer from '../../routes/DrawerStack';
 import Colors from '../../assets/utils/colors';
+import { SafeAreaView } from 'react-native';
 const Tab = createBottomTabNavigator();
 
 
 
 function Bottomtabs() {
     return (
+        <SafeAreaView style={{flex:1,backgroundColor: 'black'}}>
         <Tab.Navigator
             initialRouteName='Home'
 
@@ -89,6 +91,7 @@ function Bottomtabs() {
                 })}
             />
         </Tab.Navigator>
+        </SafeAreaView>
     );
 }
 

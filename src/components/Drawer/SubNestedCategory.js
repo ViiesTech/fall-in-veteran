@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import ActiveDot from './activeDot'
+import ActiveDot from './ActiveDot'
 
 const SubNestedCategory = ({ title }) => {
     return (

@@ -176,6 +176,7 @@ const Home = ({ navigation, }) => {
       <FlatList
       
         data={data}
+        showsVerticalScrollIndicator={false}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={{ paddingBottom: 30, }}

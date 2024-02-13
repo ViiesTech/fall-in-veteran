@@ -107,6 +107,7 @@ const Shop = ({ navigation, navigate }) => {
 
                     <FlatList
                         data={data}
+                        showsVerticalScrollIndicator={false}
                         numColumns={2}
                         columnWrapperStyle={{ justifyContent: 'space-between', marginVertical: 5 }}
                         renderItem={renderItem}

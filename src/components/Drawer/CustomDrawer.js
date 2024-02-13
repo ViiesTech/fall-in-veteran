@@ -12,7 +12,7 @@ import SimpleCategory from './SimpleCategory'
 import SubCategories from './SubCategories'
 import NestedCategory from './NestedCategory'
 import SubNestedCategory from './SubNestedCategory'
-import ActiveDot from './activeDot'
+import ActiveDot from './ActiveDot'
 
 const CustomDrawer = ({ navigation }) => {
     return (
