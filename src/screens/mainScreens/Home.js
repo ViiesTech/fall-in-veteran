@@ -1,9 +1,7 @@
 import { View, Text, ImageBackground, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Appassets from '../../assets/images/Appassets'
-import SearchIcon from 'react-native-vector-icons/Feather'
-import Notification from 'react-native-vector-icons/Ionicons'
-import Menu from 'react-native-vector-icons/Entypo'
+
 import LikeIcon from 'react-native-vector-icons/AntDesign'
 import CommentIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import ShareIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -12,10 +10,12 @@ import Header from '../../components/Header'
 import SaveIcon from 'react-native-vector-icons/FontAwesome'
 import HideIcon from 'react-native-vector-icons/Feather'
 import ReportIcon from 'react-native-vector-icons/AntDesign'
+import Colors from '../../assets/utils/colors'
+import ModalContent from '../../components/modal/Modal'
 
 
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, }) => {
   const [dialogState, setDialogState] = useState({});
   const data = [
     {
@@ -79,13 +79,13 @@ const Home = ({ navigation }) => {
               <View style={{ flexDirection: 'row', gap: 20,alignItems:'center' }}>
                 <TouchableOpacity>
 
-                  <Text style={{ color: 'white',fontSize:16 }}>{item.name}</Text>
+                  <Text style={{ color: Colors.white,fontSize:16 }}>{item.name}</Text>
                 </TouchableOpacity>
-                <Text style={{ color: 'white' }}>{item.addedPhoto}</Text>
+                <Text style={{ color: Colors.white }}>{item.addedPhoto}</Text>
               </View>
               <View>
 
-                <Text style={{ color: 'white' }}>{item.time}</Text>
+                <Text style={{ color: Colors.white }}>{item.time}</Text>
               </View>
             </View>
           </View>
@@ -99,12 +99,12 @@ const Home = ({ navigation }) => {
               </TouchableOpacity>
               <View style={{}}>
                 <TouchableOpacity >
-                  <Text style={{ color: 'white',fontSize:16 }}>{item.name}</Text>
+                  <Text style={{ color: Colors.white,fontSize:16 }}>{item.name}</Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
                   <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                    <Text style={{ color: 'white' }}>{item.time}</Text>
+                    <Text style={{ color: Colors.white }}>{item.time}</Text>
                     <Text style={[styles.textColor, { fontSize: 14 }]}>Community Post</Text>
                   </View>
 
@@ -114,8 +114,8 @@ const Home = ({ navigation }) => {
 
             </View>
             <View>
-              <TouchableOpacity style={{ backgroundColor: '#BF0B30', height: 35, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
-                <Text style={{ color: 'white' }}>Join Now</Text>
+              <TouchableOpacity style={{ backgroundColor:Colors.red, height: 35, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
+                <Text style={{ color: Colors.white }}>Join Now</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -124,8 +124,8 @@ const Home = ({ navigation }) => {
 
 
 
-        <View style={{ borderColor: '#BF0B30', borderWidth: 1, borderRadius: 10 }}>
-          <Text style={{ color: 'white', padding: 10 }}>{item.caption}</Text>
+        <View style={{ borderColor:Colors.red, borderWidth: 1, borderRadius: 10 }}>
+          <Text style={{ color: Colors.white, padding: 10 }}>{item.caption}</Text>
           {item.postPic && (
             <Image source={Appassets.postImage} style={{ width: '100%', borderRadius: 10 }}></Image>
 
@@ -136,29 +136,29 @@ const Home = ({ navigation }) => {
 
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 25 }}>
-            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><LikeIcon name='like2' size={20} color='white' /><Text style={styles.textColor}>{item.likes}</Text></View></TouchableOpacity>
-            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><CommentIcon size={20} name='comment-outline' color='white' /><Text style={styles.textColor}>{item.comment}</Text></View></TouchableOpacity>
-            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><ShareIcon size={20} name='share-outline' color='white' /><Text style={styles.textColor}>{item.share}</Text></View></TouchableOpacity>
+            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><LikeIcon name='like2' size={20} color={Colors.white} /><Text style={styles.textColor}>{item.likes}</Text></View></TouchableOpacity>
+            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><CommentIcon size={20} name='comment-outline' color={Colors.white} /><Text style={styles.textColor}>{item.comment}</Text></View></TouchableOpacity>
+            <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><ShareIcon size={20} name='share-outline' color={Colors.white} /><Text style={styles.textColor}>{item.share}</Text></View></TouchableOpacity>
           </View>
           <View>
 
-            <TouchableOpacity onPress={(() => toggleDialog(item.id))}><DotsIcon name='dots-three-vertical' color='white' size={17} /></TouchableOpacity>
+            <TouchableOpacity onPress={(() => toggleDialog(item.id))}><DotsIcon name='dots-three-vertical' color={Colors.white} size={17} /></TouchableOpacity>
 
           </View>
 
         </View>
         {dialogState[item.id] && (
-          <View style={{ backgroundColor: 'white', position: 'absolute', bottom: -40, right: 30, borderRadius: 5,zIndex:999, padding: 10, height: 80, justifyContent: 'center' }}>
+          <View style={{ backgroundColor: Colors.white, position: 'absolute', bottom: -40, right: 30, borderRadius: 5,zIndex:999, padding: 10, height: 80, justifyContent: 'center' }}>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
               <SaveIcon name='bookmark-o' />
-              <Text style={[styles.blackText, { marginLeft: 3 }]}>Save</Text>
+              <Text style={[Colors.black, { marginLeft: 3 }]}>Save</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-              <HideIcon name='eye-off' /><Text style={[styles.blackText, { marginLeft: 3 }]}>Hide</Text>
+              <HideIcon name='eye-off' /><Text style={[Colors.black, { marginLeft: 3 }]}>Hide</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
               <ReportIcon name='exclamationcircleo' />
-              <Text style={[styles.blackText, { marginLeft: 3 }]}>Report</Text>
+              <Text style={[Colors.black, { marginLeft: 3 }]}>Report</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -171,9 +171,10 @@ const Home = ({ navigation }) => {
 
 
   return (
-    <ImageBackground source={Appassets.splash} style={{ flex: 1 }}>
-      <Header title={"FALL IN VETERAN"} arrow={false} navigation={navigation} />
+    <ImageBackground source={Appassets.splash}   style={{ flex: 1 }}>
+      <Header title={"FALL IN VETERAN"} arrow={false} navigation={navigation}  />
       <FlatList
+      
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
@@ -191,9 +192,7 @@ export default Home
 
 const styles = StyleSheet.create({
   textColor: {
-    color: 'white'
+    color: Colors.white
   },
-  blackText: {
-    color: 'black'
-  }
+
 })

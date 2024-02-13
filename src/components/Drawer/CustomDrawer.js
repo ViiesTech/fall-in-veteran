@@ -12,6 +12,7 @@ import SimpleCategory from './SimpleCategory'
 import SubCategories from './SubCategories'
 import NestedCategory from './NestedCategory'
 import SubNestedCategory from './SubNestedCategory'
+import ActiveDot from './activeDot'
 
 const CustomDrawer = ({ navigation }) => {
     return (
@@ -31,18 +32,18 @@ const CustomDrawer = ({ navigation }) => {
                     <Text style={[styles.textColor, { fontSize: 20 }]}>—</Text>
                 </View>
                 <View style={{ paddingLeft: 25, marginVertical: 10 }}>
-                    <Grayhr />
+                    <Grayhr height={1} />
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: 5 }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: 'red', marginRight: 10 }}></View>
+                            <ActiveDot/>
                             <Text style={styles.textColor}>Army</Text>
                         </View>
                         <View ><Text style={[styles.textColor, { fontSize: 20 }]}>—</Text></View>
                     </View>
-                    <Grayhr />
+                    <Grayhr height={1} />
                     <SubNestedCategory title={'160TH Soar (A)'} />
                 </View>
-                <Redhr />
+                <Redhr height={2} />
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
                     <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -55,7 +56,7 @@ const CustomDrawer = ({ navigation }) => {
                 <SubCategories title={'Navy'} />
                 <SubCategories title={'Marine Crops'} />
                 <SubCategories title={'Air Force'} />
-                <Redhr />
+                <Redhr height={2} />
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
                     <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -65,64 +66,64 @@ const CustomDrawer = ({ navigation }) => {
                     <Text style={[styles.textColor, { fontSize: 20 }]}>—</Text>
                 </View>
                 <View style={{ paddingLeft: 25, marginVertical: 10 }}>
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center',marginVertical:10 }}>
-                            <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: 'red', marginRight: 10 }}></View>
+                            <ActiveDot/>
                             <Text style={styles.textColor}>Hats</Text>
                         </View>
                         <View ><Text style={[styles.textColor, { fontSize: 20 }]}>—</Text></View>
                     </View>
-                    <Grayhr />
+                    <Grayhr height={1} />
                     <SubNestedCategory title={'Army'} />
 
-                    <Grayhr />
+                    <Grayhr height={1} />
                     <SubNestedCategory title={'Navy'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Air Force'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Marine'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Coast Guard'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center',marginVertical:10 }}>
-                            <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: 'red', marginRight: 10 }}></View>
+                            {/* <ActiveDot/> */}
                             <Text style={styles.textColor}>Shirts</Text>
                         </View>
                         <View ><Text style={[styles.textColor, { fontSize: 20 }]}>—</Text></View>
                     </View>
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Polo'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Long Sleeves'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'Windbreaker'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <SubNestedCategory title={'T-Shirt'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <NestedCategory title={'Hoodies'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <NestedCategory title={'Sweatpants'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <NestedCategory title={'Jackets'} />
-                    <Grayhr />
+                    <Grayhr height={1} />
 
                     <NestedCategory title={'Sweatshirts'} />
                 </View>
-                <Redhr />
+                <Redhr height={2} />
 
                 <SimpleCategory IconName={'table-furniture'} Icon={FurnitureIcon} title={'Furniture'} />
                 <SimpleCategory IconName={'table-furniture'} Icon={FurnitureIcon} title={'Home Furnishing'} />

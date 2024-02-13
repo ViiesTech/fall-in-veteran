@@ -1,11 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import ActiveDot from './activeDot'
 
-const SubNestedCategory = ({title}) => {
+const SubNestedCategory = ({ title }) => {
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 20, marginVertical: 10 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: 'red', marginRight: 10 }}></View>
+                <ActiveDot />
                 <Text style={styles.textColor}>{title}</Text>
 
             </View>

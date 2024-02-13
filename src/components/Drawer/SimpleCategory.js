@@ -1,12 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Redhr from '../Redhr'
-import ConsumerIcon from 'react-native-vector-icons/FontAwesome5' // plug  coins
-import Military from 'react-native-vector-icons/MaterialIcons' //   table-furniture  health-and-safety knife-military
-// music-video
-import Drink from 'react-native-vector-icons/Entypo' //drink
-import Apparel from 'react-native-vector-icons/Ionicons' // shirt-outline fast-food-outline
-import Grayhr from '../Grayhr'
+
 const SimpleCategory = ({ title, Icon, IconName }) => {
   return (
     <View>
@@ -20,7 +15,7 @@ const SimpleCategory = ({ title, Icon, IconName }) => {
         <Text style={[styles.textColor, { fontSize: 18 }]}>{title}</Text>
       </View>
 
-      <Redhr />
+      <Redhr height={2}/>
     </View>
   )
 }

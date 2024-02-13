@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Colors from '../../assets/utils/colors';
 
 const slides = [
     {
@@ -35,8 +36,8 @@ const Slider = ({ navigation }) => {
         return (
             <ImageBackground source={item.image} style={styles.slide}>
                 <View style={{ flex: 0.5, justifyContent: 'flex-end', padding: 20 }}>
-                    <Text style={{ fontSize: 25, color: 'white', width: '83%' }} numberOfLines={2}>{item.title}</Text>
-                    <Text style={{ fontSize: 16, color: 'white', marginTop: 20 }}>{item.text}</Text>
+                    <Text style={{ fontSize: 25, color: Colors.white, width: '83%' }} numberOfLines={2}>{item.title}</Text>
+                    <Text style={{ fontSize: 16, color: Colors.white, marginTop: 20 }}>{item.text}</Text>
                     {item.next ? (
 
 
@@ -48,7 +49,7 @@ const Slider = ({ navigation }) => {
                             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
                                 <View style={{ justifyContent: 'center', paddingHorizontal: 30 }}>
 
-                                    <Text style={{ color: 'white', fontSize: 16, }}>Continue</Text>
+                                    <Text style={{ color: Colors.white, fontSize: 16, }}>Continue</Text>
                                 </View>
 
                                 <View style={styles.continue}>

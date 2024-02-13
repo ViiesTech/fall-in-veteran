@@ -1,12 +1,9 @@
 import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import Appassets from '../../assets/images/Appassets'
-import { BlurView } from '@react-native-community/blur'
-import { useHeaderHeight } from '@react-navigation/elements'
 import Eye from 'react-native-vector-icons/Entypo'
-import EyeOff from 'react-native-vector-icons/Entypo'
+import Colors from '../../assets/utils/colors'
 const Login = ({ navigation }) => {
-  const height = useHeaderHeight()
   const [showPassword, setShowPassword] = useState(true)
 
   return (
@@ -17,8 +14,8 @@ const Login = ({ navigation }) => {
         <View style={{ flex: 0.45, alignItems: 'center', justifyContent: 'flex-end', }}>
           <View style={{ paddingVertical: 30 }}>
 
-            <Text style={{ color: 'white', fontSize: 30 }}>FALL IN VETERAN</Text>
-            <Text style={{ color: 'white', fontSize: 25, marginTop: 10 }}>Login To Your Account</Text>
+            <Text style={{ color: Colors.white, fontSize: 30 }}>FALL IN VETERAN</Text>
+            <Text style={{ color: Colors.white, fontSize: 25, marginTop: 10 }}>Login To Your Account</Text>
           </View>
         </View>
 
@@ -27,21 +24,21 @@ const Login = ({ navigation }) => {
           <View style={{ position: 'absolute', height: '100%', opacity: 0.6, width: '100%', alignItems: 'center', backgroundColor: '#707070', borderTopLeftRadius: 40, borderTopRightRadius: 40 }}>
           </View>
           <View style={{ width: '100%', padding: 20, alignItems: 'center' }}>
-            <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: 'white', paddingHorizontal: 20 }} placeholderTextColor={'grey'} placeholder='john@gmail.com'>
+            <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20 }} placeholderTextColor={'grey'} placeholder='john@gmail.com'>
 
             </TextInput>
             <View style={{ flexDirection: 'row' }}>
 
-              <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: 'white', paddingHorizontal: 20, marginTop: 15 }} secureTextEntry={showPassword} placeholderTextColor={'grey'} placeholder='*******'>
+              <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20, marginTop: 15 }} secureTextEntry={showPassword} placeholderTextColor={'grey'} placeholder='*******'>
               </TextInput>
-              <Eye style={{ position: 'absolute', right: 0, alignSelf: 'center', padding: 5, top: 22, }} color='black' name={showPassword ? 'eye-with-line' : 'eye'} size={25} onPress={() => setShowPassword(!showPassword)}></Eye>
+              <Eye style={{ position: 'absolute', right: 0, alignSelf: 'center', padding: 5, top: 22, }} color={Colors.black} name={showPassword ? 'eye-with-line' : 'eye'} size={25} onPress={() => setShowPassword(!showPassword)}></Eye>
             </View>
 
-            <Text style={{ alignSelf: 'flex-end',  color: 'white', fontSize: 16, marginTop: 10 }}>Forgot Password?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Bottomtabs')} style={{ backgroundColor: '#BF0B30', height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: 'white', fontSize: 16 }} >Login</Text></TouchableOpacity>
+            <Text style={{ alignSelf: 'flex-end',  color: Colors.white, fontSize: 16, marginTop: 10 }}>Forgot Password?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Bottomtabs')} style={{ backgroundColor: Colors.red, height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: Colors.white, fontSize: 16 }} >Login</Text></TouchableOpacity>
             <View style={{ flexDirection: 'row', gap: 3, marginTop: 10 }}>
-              <Text style={{ color: 'white', fontSize: 16 }}>Don't have an Account?</Text>
-              <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }} >Sign Up</Text>
+              <Text style={{ color: Colors.white, fontSize: 16 }}>Don't have an Account?</Text>
+              <Text style={{ color: Colors.white, fontSize: 16, fontWeight: 'bold' }} >Sign Up</Text>
             </View>
 
             <View style={{ height: 1, width: '100%', borderColor: '#1D1D1D', backgroundColor: '#1D1D1D', marginTop: 30 }}></View>
@@ -60,6 +57,7 @@ const Login = ({ navigation }) => {
             </View>
           </View>
         </View>
+
       </ScrollView>
     </ImageBackground>
   )
@@ -70,7 +68,7 @@ export default Login
 const styles = StyleSheet.create({
 
   footerText: {
-    color: 'white',
+    color: Colors.white,
     fontSize: 13
   },
   absolute: {

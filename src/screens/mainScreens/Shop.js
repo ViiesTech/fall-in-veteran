@@ -5,7 +5,7 @@ import Appassets from '../../assets/images/Appassets'
 import Menu from 'react-native-vector-icons/Entypo'
 import Heart from 'react-native-vector-icons/AntDesign'
 import Rating from 'react-native-vector-icons/AntDesign'
-import { DrawerActions, useNavigation } from '@react-navigation/native'
+import Colors from '../../assets/utils/colors'
 
 const Shop = ({ navigation, navigate }) => {
 
@@ -76,18 +76,18 @@ const Shop = ({ navigation, navigate }) => {
             <View>
                 <View style={{ padding: 5 }}>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}><Text style={[styles.textColor, { fontSize: 16 }]}>Fireside Utensils</Text>
-                        <TouchableOpacity><Heart name='hearto' size={20} color='white' /></TouchableOpacity>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}><Text style={{ fontSize: 16,color:Colors.white }}>Fireside Utensils</Text>
+                        <TouchableOpacity><Heart name='hearto' size={20} color={Colors.white} /></TouchableOpacity>
                     </View>
-                    <Text style={[styles.textColor, { fontSize: 16 }]}>Firefork 360 </Text>
+                    <Text style={{ fontSize: 16,color:Colors.white }}>Firefork 360 </Text>
                     <View style={{ flexDirection: 'row', marginTop: 5, gap: 2 }}>
-                        <Rating name='star' size={16} color='yellow' />
-                        <Rating name='star' size={16} color='yellow' />
-                        <Rating name='star' size={16} color='yellow' />
-                        <Rating name='star' size={16} color='yellow' />
-                        <Rating name='star' size={16} color='yellow' />
+                        <Rating name='star' size={16} color={Colors.yellow} />
+                        <Rating name='star' size={16} color={Colors.yellow} />
+                        <Rating name='star' size={16} color={Colors.yellow} />
+                        <Rating name='star' size={16} color={Colors.yellow} />
+                        <Rating name='star' size={16} color={Colors.yellow} />
                     </View>
-                    <Text style={[styles.textColor, { fontSize: 16, marginTop: 10 }]}>$54.74</Text>
+                    <Text style={{ fontSize: 16,color:Colors.white, marginTop: 10 }}>$54.74</Text>
                 </View>
 
             </View>
@@ -99,10 +99,10 @@ const Shop = ({ navigation, navigate }) => {
             <View style={{ padding: 15 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#707070', width: '40%', height: 50, borderRadius: 8 }} onPress={() => navigation.openDrawer()}><Menu name='menu' color='white' size={30} /><Text style={[styles.textColor, { fontSize: 16 }]}>Categories</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#707070', width: '40%', height: 50, borderRadius: 8 }} onPress={() => navigation.openDrawer()}><Menu name='menu' color={Colors.white} size={30} /><Text style={{ fontSize: 16,color:Colors.white }}>Categories</Text></TouchableOpacity>
                     <TouchableOpacity style={{ height: 40, width: 40, borderRadius: 20, backgroundColor: '#707070', justifyContent: 'center', alignItems: 'center' }}><Image source={Appassets.filter}></Image></TouchableOpacity>
                 </View>
-                <Text style={[styles.textColor, { fontSize: 20, fontWeight: 'bold', marginTop: 15 }]}>Food and Beverage</Text>
+                <Text style={{ fontSize: 20,color:Colors.white, fontWeight: 'bold', marginTop: 15 }}>Food and Beverage</Text>
                 <View style={{ paddingBottom: 250, marginTop: 5 }}>
 
                     <FlatList
@@ -124,7 +124,5 @@ const Shop = ({ navigation, navigate }) => {
 export default Shop
 
 const styles = StyleSheet.create({
-    textColor: {
-        color: 'white'
-    }
+  
 })

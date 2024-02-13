@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import Signup from '../screens/authScreens/Signup'
 import Login from '../screens/authScreens/Login'
