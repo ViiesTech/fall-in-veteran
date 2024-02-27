@@ -6,6 +6,7 @@ import Menu from 'react-native-vector-icons/Entypo'
 import Heart from 'react-native-vector-icons/AntDesign'
 import Rating from 'react-native-vector-icons/AntDesign'
 import Colors from '../../assets/utils/colors'
+import Back from 'react-native-vector-icons/AntDesign';
 
 const Shop = ({ navigation, navigate }) => {
 
@@ -76,10 +77,10 @@ const Shop = ({ navigation, navigate }) => {
             <View>
                 <View style={{ padding: 5 }}>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}><Text style={{ fontSize: 16,color:Colors.white }}>Fireside Utensils</Text>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}><Text style={{ fontSize: 16, color: Colors.white }}>Fireside Utensils</Text>
                         <TouchableOpacity><Heart name='hearto' size={20} color={Colors.white} /></TouchableOpacity>
                     </View>
-                    <Text style={{ fontSize: 16,color:Colors.white }}>Firefork 360 </Text>
+                    <Text style={{ fontSize: 16, color: Colors.white }}>Firefork 360 </Text>
                     <View style={{ flexDirection: 'row', marginTop: 5, gap: 2 }}>
                         <Rating name='star' size={16} color={Colors.yellow} />
                         <Rating name='star' size={16} color={Colors.yellow} />
@@ -87,7 +88,7 @@ const Shop = ({ navigation, navigate }) => {
                         <Rating name='star' size={16} color={Colors.yellow} />
                         <Rating name='star' size={16} color={Colors.yellow} />
                     </View>
-                    <Text style={{ fontSize: 16,color:Colors.white, marginTop: 10 }}>$54.74</Text>
+                    <Text style={{ fontSize: 16, color: Colors.white, marginTop: 10 }}>$54.74</Text>
                 </View>
 
             </View>
@@ -95,14 +96,32 @@ const Shop = ({ navigation, navigate }) => {
     )
     return (
         <ImageBackground source={Appassets.splash} style={{ flex: 1 }}>
-            <Header title={"Shop"} arrow={true} navigation={navigation} />
+            {/* <Header title={"Shop"} arrow={true} navigation={navigation} /> */}
+
+        <View style={{flexDirection:'row', paddingTop:20, paddingRight:20, paddingLeft:20,justifyContent:'space-between', alignItems:'center'}}>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 ,}}>
+
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Back name='arrowleft' size={25} color={Colors.white} />
+                </TouchableOpacity>
+
+                <Text style={{ color: '#BF0B30', fontSize: 20 }}>Shop</Text>
+            </View>
+
+
+            <TouchableOpacity style={{backgroundColor:'#707070', padding:10,alignItems:'center',justifyContent:'center', }}>
+                <Text style={{color:'white',fontWeight:'bold'}}>Switch to seller</Text>
+            </TouchableOpacity>
+
+        </View>
             <View style={{ padding: 15 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#707070', width: '40%', height: 50, borderRadius: 8 }} onPress={() => navigation.openDrawer()}><Menu name='menu' color={Colors.white} size={30} /><Text style={{ fontSize: 16,color:Colors.white }}>Categories</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#707070', width: '40%', height: 50, borderRadius: 8 }} onPress={() => navigation.openDrawer()}><Menu name='menu' color={Colors.white} size={30} /><Text style={{ fontSize: 16, color: Colors.white }}>Categories</Text></TouchableOpacity>
                     <TouchableOpacity style={{ height: 40, width: 40, borderRadius: 20, backgroundColor: '#707070', justifyContent: 'center', alignItems: 'center' }}><Image source={Appassets.filter}></Image></TouchableOpacity>
                 </View>
-                <Text style={{ fontSize: 20,color:Colors.white, fontWeight: 'bold', marginTop: 15 }}>Food and Beverage</Text>
+                <Text style={{ fontSize: 20, color: Colors.white, fontWeight: 'bold', marginTop: 15 }}>Food and Beverage</Text>
                 <View style={{ paddingBottom: 250, marginTop: 5 }}>
 
                     <FlatList
@@ -125,5 +144,5 @@ const Shop = ({ navigation, navigate }) => {
 export default Shop
 
 const styles = StyleSheet.create({
-  
+
 })

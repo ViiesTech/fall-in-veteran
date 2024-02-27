@@ -13,11 +13,11 @@ const Welcome = ({ navigation }) => {
 
             <View style={{ alignItems: 'center', gap: 10, flex: 0.5 }}>
                 <Text style={{ color: Colors.white, fontSize: 16 }}>Time To Get Started</Text>
-                <TouchableOpacity style={{ backgroundColor: Colors.red, height: 60, width: '85%', borderRadius: 35, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('Login')}><Text style={{ color: Colors.white, fontSize: 16 }}>Get Started! Sign Up</Text></TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: Colors.red, height: 60, width: '85%', borderRadius: 35, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('Signup')}><Text style={{ color: Colors.white, fontSize: 16 }}>Get Started! Sign Up</Text></TouchableOpacity>
 
                 <View style={{ flexDirection: 'row' }}>
                     <Text style={{ color: Colors.white, fontSize: 16 }}>Already Have An Account.</Text>
-                    <Text style={{ color: Colors.red, fontSize: 16, fontWeight: 'bold', marginLeft: 2 }} >Login Here</Text>
+                    <Text onPress={()=> navigation.navigate("Login")} style={{ color: Colors.red, fontSize: 16, fontWeight: 'bold', marginLeft: 2 }} >Login Here</Text>
                 </View>
             </View>
 

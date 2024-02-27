@@ -60,6 +60,10 @@ const ModalContent = ({ navigation, modalVisible, setModalVisible }) => {
 
                 <Redhr height={2} />
                 <ModalSection IconName={BlogAndJobs} title={'Jobs'} Icon={'bag-outline'} color={Colors.white} size={25} />
+{/* 
+              <Redhr height={2} />
+                <ModalSection IconName={BlogAndJobs} title={'Shops'} Icon={'bag-outline'} color={Colors.white} size={25} />  */}
+
 
                 <Redhr height={2} />
                 <ModalSection IconName={OfferAndLogout} title={'Offers'} Icon={'local-offer'} color={Colors.white} size={25} />

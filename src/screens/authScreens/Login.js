@@ -38,7 +38,7 @@ const Login = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Bottomtabs')} style={{ backgroundColor: Colors.red, height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: Colors.white, fontSize: 16 }} >Login</Text></TouchableOpacity>
             <View style={{ flexDirection: 'row', gap: 3, marginTop: 10 }}>
               <Text style={{ color: Colors.white, fontSize: 16 }}>Don't have an Account?</Text>
-              <Text style={{ color: Colors.white, fontSize: 16, fontWeight: 'bold' }} >Sign Up</Text>
+              <Text onPress={()=> navigation.navigate("Signup")} style={{ color: Colors.white, fontSize: 16, fontWeight: 'bold' }} >Sign Up</Text>
             </View>
 
             <View style={{ height: 1, width: '100%', borderColor: '#1D1D1D', backgroundColor: '#1D1D1D', marginTop: 30 }}></View>

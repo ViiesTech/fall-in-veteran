@@ -1,5 +1,8 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+
 import Home from './Home';
 import Group from './Group';
 import Create from './Create';
@@ -8,14 +11,30 @@ import HomeIcon from 'react-native-vector-icons/AntDesign'
 import GroupIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import EventIcon from 'react-native-vector-icons/FontAwesome'
 import ShopIcon from 'react-native-vector-icons/Fontisto'
+import  Ionicons from 'react-native-vector-icons/Ionicons'
 import MyDrawer from '../../routes/DrawerStack';
+
 import Colors from '../../assets/utils/colors';
 import { SafeAreaView } from 'react-native';
+import Profile from './Profile';
+import Notification from './StackScreens/Notification';
+import Jobs from './StackScreens/Jobs';
 const Tab = createBottomTabNavigator();
 
+const Stack = createNativeStackNavigator();
+function Bottomtabs(){
+    return(
+        <Stack.Navigator initialRouteName={'Alltabs'} screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Alltabs" component={Alltabs} />
+      <Stack.Screen name="MyDrawer" component={MyDrawer} />
+      <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name="Jobs" component={Jobs} />
 
+    </Stack.Navigator>
+    )
+}
 
-function Bottomtabs() {
+function Alltabs() {
     return (
         <SafeAreaView style={{flex:1,backgroundColor: 'black'}}>
         <Tab.Navigator
@@ -82,11 +101,11 @@ function Bottomtabs() {
 
 
             <Tab.Screen
-                name="Shop"
-                component={MyDrawer}
+                name="Profile"
+                component={Profile}
                 options={({ route }) => ({
                     tabBarIcon: ({ focused, size }) => (
-                        <ShopIcon name="shopping-store" size={size} color={focused ? Colors.red : Colors.white} />
+                        <Ionicons name="person-outline" size={size} color={focused ? Colors.red : Colors.white} />
                     ),
                 })}
             />
