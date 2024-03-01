@@ -7,24 +7,11 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
 const Create = () => {
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false)
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardVisible(true); // or some other action
-      }
-    );
 
 
-  }, [])
 
-  console.log("isKeyboardVisible", isKeyboardVisible)
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ height:'100%' }}>
+   
       <ImageBackground source={Appassets.slide2} style={{ height: '100%', }}>
         <Text style={{ color: Colors.white, fontSize: 25, padding: 20 }}>Create</Text>
 
@@ -108,7 +95,7 @@ const Create = () => {
 
 
       </ImageBackground>
-    </KeyboardAvoidingView>
+
   )
 }
 

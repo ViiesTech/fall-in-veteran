@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet, Image, KeyboardAvoidingView, Platform, ScrollView, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import Appassets from '../../assets/images/Appassets'
 import Eye from 'react-native-vector-icons/Entypo'
@@ -6,14 +6,23 @@ import Colors from '../../assets/utils/colors'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import ImagePicker from 'react-native-image-crop-picker';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { setLoader } from '../../redux/AuthSlice'
+import Toast from 'react-native-toast-message'
+
 const Signup = ({ navigation }) => {
-  const [showPassword, setShowPassword] = useState(true)
+
+  const dispatch = useDispatch()
+  const isLoading = useSelector(state => state.Data.isLoading)
+
+
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [termscondition, setTermscondition] = useState(true)
-
+  const [pickedImage, setpickedImage] = useState()
+  const [showPassword, setShowPassword] = useState(true)
 
   const openLibrary = () => {
     ImagePicker.openPicker({
@@ -22,42 +31,84 @@ const Signup = ({ navigation }) => {
       cropping: true
     }).then(image => {
       console.log(image);
+      setpickedImage(image)
     });
   }
 
   const SignUp = () => {
 
-    let data = new FormData();
-    data.append('email', email);
-    data.append('password', password);
-    data.append('profile', {
-      name: 'image',
-      type: pickedImage.mime,
-      uri: pickedImage.path
 
-    });
-    data.append('name', name);
-    data.append('tc', termscondition);
+    dispatch(setLoader(true))
 
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'http://192.168.100.198:3000/fallinveteran/api/Register',
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      data: data
-    };
+    console.log("dsadas", pickedImage.mime)
 
-    axios.request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
+    if (email == "") {
+      dispatch(setLoader(false))
+      showToast("error", "Please enter your email")
+    } else if (password == "") {
+      dispatch(setLoader(false))
+      showToast("error", "Please enter your password")
+    } else if (name == "") {
+      dispatch(setLoader(false))
+      showToast("error", "Please enter your name")
+    } else if (termscondition == false) {
+      dispatch(setLoader(false))
+      showToast("error", "Please confirm your terms & condition")
+    } else {
+
+      let data = new FormData();
+      data.append('email', email);
+      data.append('password', password);
+      data.append('profile', {
+        name: 'image',
+        type: pickedImage.mime,
+        uri: pickedImage.path
       });
+      data.append('name', name);
+      data.append('tc', termscondition);
+
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://192.168.100.198:3000/fallinveteran/api/Register',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        data: data
+      };
+
+      axios.request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+
+          showToast("success", response.data.message)
+
+          dispatch(setLoader(false))
+
+          if(response.data.status == true){
+
+            navigation.navigate("Login")
+          }else{
+
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          dispatch(setLoader(false))
+          showToast("error", "Something went wrong")
+        });
+
+    }
 
   }
+
+  const showToast = (type, msg) => {
+    Toast.show({
+      type: type,
+      text1: msg
+    })
+  }
+
   return (
 
     <ImageBackground style={{ flex: 1, justifyContent: "flex-end" }} source={Appassets.splash}>
@@ -80,33 +131,74 @@ const Signup = ({ navigation }) => {
           </View>
 
           <TouchableOpacity onPress={() => openLibrary()} style={{ height: 90, width: 90, borderRadius: 200, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center' }}>
-            <Ionicons
-              name="person"
-              color={"white"}
-              size={45}
-            />
+
+            {
+              pickedImage ?
+
+                <Image source={{ uri: pickedImage.path }} style={{ height: 90, width: 90, borderRadius: 200 }} />
+                :
+                <Ionicons
+                  name="person"
+                  color={"white"}
+                  size={45}
+                />
+            }
+
           </TouchableOpacity>
 
           <View style={{ width: '100%', padding: 20, alignItems: 'center' }}>
 
-            <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20, marginBottom: 15 }} placeholderTextColor={'grey'} placeholder='john'>
 
-            </TextInput>
 
-            <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20 }} placeholderTextColor={'grey'} placeholder='john@gmail.com'>
+            <TextInput
+              style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20, marginBottom: 15 }}
+              placeholderTextColor={'grey'}
+              placeholder='john'
+              onChangeText={(txt) => {
+                setName(txt)
+              }}
+              value={name}
+            />
 
-            </TextInput>
-            <View style={{ flexDirection: 'row' }}>
+            <TextInput
+              style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20, marginBottom: 15 }}
+              placeholderTextColor={'grey'}
+              placeholder='john@gmail.com'
+              onChangeText={(txt) => {
+                setEmail(txt)
+              }}
+              value={email}
+            />
 
-              <TextInput style={{ height: 50, width: '100%', borderRadius: 10, backgroundColor: Colors.white, paddingHorizontal: 20, marginTop: 15 }} secureTextEntry={showPassword} placeholderTextColor={'grey'} placeholder='*******'>
-              </TextInput>
-              <Eye style={{ position: 'absolute', right: 0, alignSelf: 'center', padding: 5, top: 22, }} color={Colors.black} name={showPassword ? 'eye-with-line' : 'eye'} size={25} onPress={() => setShowPassword(!showPassword)}></Eye>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.white, width: '100%', borderRadius: 10, paddingHorizontal: 20 }}>
+
+              <TextInput
+                style={{ height: 50, width: '90%', borderRadius: 10, }}
+                secureTextEntry={showPassword}
+                placeholderTextColor={'grey'}
+                placeholder='*******'
+                onChangeText={(txt) => {
+                  setPassword(txt)
+                }}
+                value={password}
+              />
+
+              <Eye color={Colors.black} name={showPassword ? 'eye-with-line' : 'eye'} size={25} onPress={() => setShowPassword(!showPassword)} />
             </View>
+            {
+              isLoading == true ?
 
-            <TouchableOpacity onPress={() => SignUp()} style={{ backgroundColor: Colors.red, height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: Colors.white, fontSize: 16 }} >Create</Text></TouchableOpacity>
+                <View style={{ backgroundColor: Colors.red, height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} >
+                  <ActivityIndicator size={'small'} color={'white'} />
+                </View>
+                :
+
+                <TouchableOpacity onPress={() => SignUp()} style={{ backgroundColor: Colors.red, height: 60, width: '100%', borderRadius: 35, justifyContent: 'center', alignItems: 'center', marginTop: 15 }} ><Text style={{ color: Colors.white, fontSize: 16 }} >Create</Text></TouchableOpacity>
+            } 
             <View style={{ flexDirection: 'row', gap: 3, marginTop: 10 }}>
               <Text style={{ color: Colors.white, fontSize: 16 }}>Already have an Account?</Text>
-              <Text style={{ color: Colors.white, fontSize: 16, fontWeight: 'bold' }} >Login</Text>
+              <Text onPress={() => navigation.navigate("Login")} style={{ color: Colors.white, fontSize: 16, fontWeight: 'bold' }} >Login</Text>
             </View>
 
             <View style={{ height: 1, width: '100%', borderColor: '#1D1D1D', backgroundColor: '#1D1D1D', marginTop: 30 }}></View>

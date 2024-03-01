@@ -12,5 +12,6 @@ const Appassets = {
     beverage: require('./beverage.png'),
     shop: require('./shop.png'),
     modalProfile: require('./modalProfile.png'),
+    videopic: require('./videopic.png'),
 }
 export default Appassets

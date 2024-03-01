@@ -85,25 +85,25 @@ const Header = ({ navigation, title, arrow }) => {
 
                             <Redhr height={2} />
                         </View>
-                        <ModalSection IconName={PagesAndHelp} title={'Pages'} Icon={'flag'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Pages'), setModalVisible(false)}} IconName={PagesAndHelp} title={'Pages'} Icon={'flag'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection IconName={WatchIcon} title={'Watch'} Icon={'play-video'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Watchs'), setModalVisible(false)}} IconName={WatchIcon} title={'Watch'} Icon={'play-video'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection IconName={BlogAndJobs} title={'Blogs'} Icon={'newspaper-outline'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Blogs'), setModalVisible(false)}} IconName={BlogAndJobs} title={'Blogs'} Icon={'newspaper-outline'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection navigation={() => navigation.navigate('Jobs')}   IconName={BlogAndJobs} title={'Jobs'} Icon={'bag-outline'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Jobs'), setModalVisible(false)}}   IconName={BlogAndJobs} title={'Jobs'} Icon={'bag-outline'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection navigation={() => navigation.navigate('MyDrawer')} IconName={BlogAndJobs} title={'Shops'} Icon={'bag-outline'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('MyDrawer'), setModalVisible(false)}} IconName={BlogAndJobs} title={'Shops'} Icon={'bag-outline'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection IconName={OfferAndLogout} title={'Offers'} Icon={'local-offer'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Offers'), setModalVisible(false)}} IconName={OfferAndLogout} title={'Offers'} Icon={'local-offer'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
-                        <ModalSection IconName={ForumIcon} title={'Forums'} Icon={'forum-outline'} color={Colors.white} size={25} />
+                        <ModalSection navigation={() => {navigation.navigate('Forums'), setModalVisible(false)}}  IconName={ForumIcon} title={'Forums'} Icon={'forum-outline'} color={Colors.white} size={25} />
 
                         <Redhr height={2} />
 

@@ -9,7 +9,7 @@ const Routes = () => {
     const Stack = createNativeStackNavigator()
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Bottomtabs' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='AuthStack' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='AuthStack' component={AuthStack}></Stack.Screen>
                 <Stack.Screen name='Bottomtabs' component={Bottomtabs}></Stack.Screen>
                 <Stack.Screen name='MyDrawer' component={MyDrawer}></Stack.Screen>

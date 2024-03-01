@@ -96,8 +96,8 @@ const Profile = () => {
           data={data}
           renderItem={({ item }) => {
             return (
-              <View style={{ width: '100%', marginTop: 10, alignSelf: 'center', borderRadius: 20, overflow: 'hidden', }}>
-                <View style={{ position: 'absolute', height: '100%', opacity: 0.6, width: '100%', backgroundColor: '#707070',  alignSelf:'center' }}>
+              <View style={{ width: '100%', marginTop: 10, alignSelf: 'center', overflow: 'hidden', }}>
+                <View style={{ position: 'absolute', height: '100%', opacity: 0.6, width: '100%', backgroundColor: '#707070', alignSelf: 'center' }}>
                 </View>
 
                 <View style={{ flexDirection: 'row', width: '90%', alignSelf: 'center', marginTop: 10 }}>
@@ -116,18 +116,20 @@ const Profile = () => {
                   </View>
                 </View>
 
-                <View style={{ borderColor: Colors.red, borderWidth: 1, borderRadius: 10 }}>
-                  <Text style={{ color: Colors.white, padding: 10 }}>{item.caption}</Text>
-                  {item.postPic && (
-                    <Image source={Appassets.postImage} style={{ width: '100%', borderRadius: 10 }}></Image>
+                <View style={{ padding: 20 }}>
+                  <View style={{ borderColor: Colors.red, borderWidth: 1, borderRadius: 10 }}>
+                    <Text style={{ color: Colors.white, padding: 10 }}>{item.caption}</Text>
+                    {item.postPic && (
+                      <Image source={Appassets.postImage} style={{ width: '100%', borderRadius: 10 }}></Image>
 
-                  )}
+                    )}
+                  </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
 
 
 
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 25, height:40, paddingHorizontal:20 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 25, height: 40, paddingHorizontal: 20 }}>
                     <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><LikeIcon name='like2' size={20} color={Colors.white} /><Text style={styles.textColor}>{item.likes}</Text></View></TouchableOpacity>
                     <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><CommentIcon size={20} name='comment-outline' color={Colors.white} /><Text style={styles.textColor}>{item.comment}</Text></View></TouchableOpacity>
                     <TouchableOpacity><View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><ShareIcon size={20} name='share-outline' color={Colors.white} /><Text style={styles.textColor}>{item.share}</Text></View></TouchableOpacity>

@@ -8,7 +8,7 @@ import Rating from 'react-native-vector-icons/AntDesign'
 import Colors from '../../assets/utils/colors'
 import Back from 'react-native-vector-icons/AntDesign';
 
-const Shop = ({ navigation, navigate }) => {
+const Shop = ({ navigation }) => {
 
 
     const data = [
@@ -110,7 +110,7 @@ const Shop = ({ navigation, navigate }) => {
             </View>
 
 
-            <TouchableOpacity style={{backgroundColor:'#707070', padding:10,alignItems:'center',justifyContent:'center', }}>
+            <TouchableOpacity onPress={()=> navigation.navigate("Seller")} style={{backgroundColor:'#707070', padding:10,alignItems:'center',justifyContent:'center', }}>
                 <Text style={{color:'white',fontWeight:'bold'}}>Switch to seller</Text>
             </TouchableOpacity>
 

@@ -38,7 +38,7 @@ const Jobs = ({ navigation }) => {
                         <TextInput
                             placeholder='Search for Jobs'
                             placeholderTextColor={Colors.white}
-                            style={{ width: '80%' }}
+                            style={{ width: '80%', height:40 }}
                         />
 
 
@@ -56,63 +56,63 @@ const Jobs = ({ navigation }) => {
 
                 </View>
 
-                                <ScrollView contentContainerStyle={{flexGrow:1, paddingBottom:200}}>
+                <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 200 }}>
 
-                <Text style={{ color: Colors.white, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>Popular Jobs</Text>
+                    <Text style={{ color: Colors.white, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>Popular Jobs</Text>
 
-                <View style={{ height: 160 }} >
-                    <FlatList
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        data={evets}
-                        renderItem={({ item }) => {
-                            return (
-                                <View style={{ marginLeft: 20, marginTop: 20, borderRadius: 10, }}>
-                                    <View style={{ height: 140, width: '100%', opacity: 0.6, backgroundColor: 'gray', position: 'absolute', borderRadius: 10 }} />
-                                    <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-                                        <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                                            <Text style={{ color: 'white', fontSize: 20 }}>Senior (HR Manager)</Text>
-                                            <FontAwesome
-                                                name={'bookmark-o'}
-                                                size={18}
-                                                color={'white'}
-                                                style={{ marginLeft: 20 }}
-                                            />
-                                        </View>
-
-                                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20, justifyContent: 'space-between' }}>
-
-                                            <Text style={{ color: '#EFEFEF' }}>40k - 50k / year</Text>
-
-                                            <TouchableOpacity style={{ padding: 2, borderWidth: 1, borderColor: 'white', borderRadius: 5, }}>
-                                                <Text style={{ color: 'white', fontSize: 10 }}>Full Time</Text>
-                                            </TouchableOpacity>
-                                        </View>
-
-
-                                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, justifyContent: 'space-between', marginTop: 15 }}>
-
-                                            <Image source={require('../../../assets/images/pfp.png')} style={{ height: 40, width: 40, borderRadius: 200 }} />
-
-                                            <View style={{ marginLeft: 10 }}>
-                                                <Text style={{ color: 'white' }}>Channel Inc, LLC</Text>
-                                                <Text style={{ color: 'white' }}>San Diago</Text>
+                    <View style={{ height: 160 }} >
+                        <FlatList
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            data={evets}
+                            renderItem={({ item }) => {
+                                return (
+                                    <View style={{ marginLeft: 20, marginTop: 20, borderRadius: 10, }}>
+                                        <View style={{ height: 140, width: '100%', opacity: 0.6, backgroundColor: 'gray', position: 'absolute', borderRadius: 10 }} />
+                                        <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
+                                            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+                                                <Text style={{ color: 'white', fontSize: 20 }}>Senior (HR Manager)</Text>
+                                                <FontAwesome
+                                                    name={'bookmark-o'}
+                                                    size={18}
+                                                    color={'white'}
+                                                    style={{ marginLeft: 20 }}
+                                                />
                                             </View>
 
-                                            <View style={{ marginTop: 20 }}>
-                                                <Text style={{ color: 'white' }}>4 days ago</Text>
+                                            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20, justifyContent: 'space-between' }}>
+
+                                                <Text style={{ color: '#EFEFEF' }}>40k - 50k / year</Text>
+
+                                                <TouchableOpacity style={{ padding: 2, borderWidth: 1, borderColor: 'white', borderRadius: 5, }}>
+                                                    <Text style={{ color: 'white', fontSize: 10 }}>Full Time</Text>
+                                                </TouchableOpacity>
                                             </View>
 
+
+                                            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, justifyContent: 'space-between', marginTop: 15 }}>
+
+                                                <Image source={require('../../../assets/images/pfp.png')} style={{ height: 40, width: 40, borderRadius: 200 }} />
+
+                                                <View style={{ marginLeft: 10 }}>
+                                                    <Text style={{ color: 'white' }}>Channel Inc, LLC</Text>
+                                                    <Text style={{ color: 'white' }}>San Diago</Text>
+                                                </View>
+
+                                                <View style={{ marginTop: 20 }}>
+                                                    <Text style={{ color: 'white' }}>4 days ago</Text>
+                                                </View>
+
+                                            </View>
                                         </View>
                                     </View>
-                                </View>
-                            )
-                        }}
-                    />
-                </View>
+                                )
+                            }}
+                        />
+                    </View>
 
 
-                <Text style={{ color: Colors.white, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>RECENT JOBS</Text>
+                    <Text style={{ color: Colors.white, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>RECENT JOBS</Text>
 
                     <FlatList
                         horizontal={false}
@@ -159,7 +159,7 @@ const Jobs = ({ navigation }) => {
 
 
 
-            </ScrollView>
+                </ScrollView>
             </View>
 
         </ImageBackground>
