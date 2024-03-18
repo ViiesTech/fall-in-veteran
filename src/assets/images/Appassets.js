@@ -13,5 +13,12 @@ const Appassets = {
     shop: require('./shop.png'),
     modalProfile: require('./modalProfile.png'),
     videopic: require('./videopic.png'),
+
+    like: require('./like.png'),
+    heart: require('./heart.png'),
+    laugh: require('./laugh.png'),
+    wow: require('./wow.png'),
+    sad: require('./sad.png'),
+    angry: require('./angry.png'),
 }
 export default Appassets

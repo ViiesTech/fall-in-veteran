@@ -1,5 +1,7 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import Toast from 'react-native-toast-message'
+
 
 const initialState = {
     data: [],
@@ -7,16 +9,35 @@ const initialState = {
     isLoading: false
 }
 
+
+
 export const CurrentLogin = createAsyncThunk(
     'user',
     async (config) => {
-        return axios(config).then((response)=>{
-            console.log("res",response.data)
-            if(response.data.success == false){
-                console.log("Toast")
+        return axios(config)
+        .then((response)=>{
+            
+            if(response.data.status == false){
+
+                Toast.show({
+                    type: 'error',
+                    text1: response.data.message
+                })
+                return response
+
+
+                
             }else{
-                console.log("error")
+                console.log("Successfully logged in")
+
+                Toast.show({
+                    type: 'success',
+                    text1: "Successfully logged in"
+                })
+                return response
+                
             }
+            return response
         }).catch(()=>{
             console.log("Error")
         })
@@ -36,22 +57,27 @@ export const AuthSlice = createSlice({
         setLoader: (state, action) => {
             state.isLoading = action.payload
         },
-        Logout: (state) => {
+        setLogout: (state) => {
             state.data = []
+            state.token = ""
+            state.isLoading = false
         },
 
     },
     extraReducers:(builder)=>{
         builder.addCase(CurrentLogin.fulfilled,(state, action)=>{
-            state.data = action.payload.data,
-            state.token = action.payload.token
-        }).addCase(CurrentLogin.rejected, (state, action) => {
 
+
+            state.data = action.payload?.data.data,
+            state.token = action.payload?.data?.token
+            state.isLoading = false
+        }).addCase(CurrentLogin.rejected, (state, action) => {
+            state.isLoading = false
         })
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, setLoader } = AuthSlice.actions
+export const { setLogout, setData, setLoader } = AuthSlice.actions
 
 export default AuthSlice.reducer

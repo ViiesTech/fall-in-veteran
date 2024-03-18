@@ -25,26 +25,47 @@ import Blogs from './StackScreens/Blogs';
 import Watchs from './StackScreens/Watchs';
 import Pages from './StackScreens/Pages';
 import Seller from './StackScreens/Seller';
+import CommentScreen from './post/CommentScreen';
+import FriendsProfile from './StackScreens/FriendsProfile';
+import ChatList from './chat/ChatList';
+import Conversation from './chat/Conversation';
+import { useSelector } from 'react-redux';
+import socketServices from '../../socket/Socket_Service';
+import FindFriends from './StackScreens/FindFriends';
 const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 function Bottomtabs() {
-    return (
-            <SafeAreaView style={{flex:1, backgroundColor: 'black' }}>
-        <Stack.Navigator initialRouteName={'Alltabs'} screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Alltabs" component={Alltabs} />
-            <Stack.Screen name="MyDrawer" component={MyDrawer} />
-            <Stack.Screen name="Notification" component={Notification} />
-            <Stack.Screen name="Jobs" component={Jobs} />
-            <Stack.Screen name="Forums" component={Forums} />
-            <Stack.Screen name="Offers" component={Offers} />
-            <Stack.Screen name="Blogs" component={Blogs} />
-            <Stack.Screen name="Watchs" component={Watchs} />
-            <Stack.Screen name="Pages" component={Pages} />
-            <Stack.Screen name="Seller" component={Seller} />
 
-        </Stack.Navigator>
-            </SafeAreaView>
+    const userData = useSelector(state => state.Data.data)
+    console.log("logedin",userData)
+
+    socketServices.emit('login',userData)
+
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+            <Stack.Navigator initialRouteName={'Alltabs'} screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Alltabs" component={Alltabs} />
+                <Stack.Screen name="MyDrawer" component={MyDrawer} />
+                <Stack.Screen name="Notification" component={Notification} />
+                <Stack.Screen name="Jobs" component={Jobs} />
+                <Stack.Screen name="Forums" component={Forums} />
+                <Stack.Screen name="Offers" component={Offers} />
+                <Stack.Screen name="Blogs" component={Blogs} />
+                <Stack.Screen name="Watchs" component={Watchs} />
+                <Stack.Screen name="Pages" component={Pages} />
+                <Stack.Screen name="Seller" component={Seller} />
+                <Stack.Screen name="FindFriends" component={FindFriends} />
+
+
+                <Stack.Screen name="CommentScreen" component={CommentScreen} />
+                <Stack.Screen name="FriendsProfile" component={FriendsProfile} />
+
+                <Stack.Screen name="ChatList" component={ChatList} />
+                <Stack.Screen name="Conversation" component={Conversation} />
+
+            </Stack.Navigator>
+        </SafeAreaView>
     )
 }
 

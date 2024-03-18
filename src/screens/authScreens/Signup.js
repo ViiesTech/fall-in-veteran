@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoader } from '../../redux/AuthSlice'
 import Toast from 'react-native-toast-message'
+import Base_Api_Url from '../../utls/Base_Api_Url'
 
 const Signup = ({ navigation }) => {
 
@@ -35,13 +36,13 @@ const Signup = ({ navigation }) => {
     });
   }
 
+
   const SignUp = () => {
 
 
+    
+
     dispatch(setLoader(true))
-
-    console.log("dsadas", pickedImage.mime)
-
     if (email == "") {
       dispatch(setLoader(false))
       showToast("error", "Please enter your email")
@@ -54,15 +55,20 @@ const Signup = ({ navigation }) => {
     } else if (termscondition == false) {
       dispatch(setLoader(false))
       showToast("error", "Please confirm your terms & condition")
-    } else {
+    }else if(pickedImage == undefined){
+      dispatch(setLoader(false))
+      showToast("error", "Please select your profile picture")
+    } 
+    
+    else {
 
       let data = new FormData();
       data.append('email', email);
       data.append('password', password);
       data.append('profile', {
         name: 'image',
-        type: pickedImage.mime,
-        uri: pickedImage.path
+        type: pickedImage?.mime,
+        uri: pickedImage?.path
       });
       data.append('name', name);
       data.append('tc', termscondition);
@@ -70,7 +76,7 @@ const Signup = ({ navigation }) => {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://192.168.100.198:3000/fallinveteran/api/Register',
+        url: `${Base_Api_Url}Register`,
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -88,7 +94,9 @@ const Signup = ({ navigation }) => {
           if(response.data.status == true){
 
             navigation.navigate("Login")
+            dispatch(setLoader(false))
           }else{
+            dispatch(setLoader(false))
 
           }
         })
