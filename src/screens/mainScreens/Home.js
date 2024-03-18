@@ -145,21 +145,21 @@ const Home = ({ navigation, }) => {
         // console.log("Filtering I exist",  filteringIexist)
 
         const fullData = response.data.All_Post
-        const AllPostLength =  response.data.All_Post.length
-        const temp =[]
-        for(i = 0; i <=  AllPostLength; i++) {
-            const filterinng = fullData[i]?.Post_Like?.filter(post => post.myId == currentUserData._id)
+        const AllPostLength = response.data.All_Post.length
+        const temp = []
+        for (i = 0; i <= AllPostLength; i++) {
+          const filterinng = fullData[i]?.Post_Like?.filter(post => post.myId == currentUserData._id)
 
-              if(filterinng?.length > 0){
+          if (filterinng?.length > 0) {
 
-                temp.push(filterinng[0])
+            temp.push(filterinng[0])
 
-              }else{
-                console.log("not found ")
-              }
+          } else {
+            console.log("not found ")
+          }
         }
 
-        console.log("temp", temp)
+
         setPostReaction(temp)
 
       })
@@ -245,8 +245,7 @@ const Home = ({ navigation, }) => {
 
     axios.request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
-        getAllPost()
+
       })
       .catch((error) => {
         console.log(error);
@@ -335,7 +334,7 @@ const Home = ({ navigation, }) => {
 
     const filter = postReaction.filter((items) => items.postId == item._id)
 
-    const filteringFromDataBase = item?.Post_Like.filter((items)=> items.myId == currentUserData._id && items.postId === item._id)
+    const filteringFromDataBase = item?.Post_Like.filter((items) => items.myId == currentUserData._id && items.postId === item._id)
 
 
     // console.log("filteringFromDataBase data exist?", filteringFromDataBase)
@@ -418,7 +417,7 @@ const Home = ({ navigation, }) => {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
 
 
-            <Text style={styles.textColor}>{item?.Post_Like?.length}</Text>
+            {/* <Text style={styles.textColor}>{item?.Post_Like?.length}</Text> */}
             <View style={{ flexDirection: 'row' }}>
 
               <Text style={{ color: Colors.white, marginRight: 5 }}>{item?.All_Comments_On_Post?.length}</Text>
@@ -504,7 +503,6 @@ const Home = ({ navigation, }) => {
                 null
             }
 
-
             <TouchableOpacity onLongPress={() => { setActivePostId(item._id); ShowReaction(true) }} onPress={() => { LikeFuntion(item), ShowReaction(false) }} >
               {
 
@@ -530,16 +528,6 @@ const Home = ({ navigation, }) => {
             </TouchableOpacity>
 
 
-
-            {/* <TouchableOpacity onPress={() => Like(item)} >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                <LikeIcon name={item.Post_Like.includes(currentUserData._id) ? "like1" : "like2"} size={20} color={Colors.white} />
-                <Text style={styles.textColor}>{item?.Post_Like?.length}</Text>
-              </View>
-            </TouchableOpacity> */}
-
-
-
             <TouchableOpacity onPress={() => { navigation.navigate("CommentScreen", { Post_data: item }) }} >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}><EvilIcons size={20} name='comment' color={Colors.white} />
                 <Text style={styles.textColor}>{item?.All_Comments_On_Post?.length}</Text>
@@ -552,26 +540,6 @@ const Home = ({ navigation, }) => {
               </View>
             </TouchableOpacity>
           </View>
-
-
-          {/* {dialogState[item.id] && (
-            <View style={{ backgroundColor: Colors.white, position: 'absolute', bottom: -40, right: 30, borderRadius: 5, zIndex: 999, padding: 10, height: 80, justifyContent: 'center' }}>
-              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                <SaveIcon name='bookmark-o' />
-                <Text style={[Colors.black, { marginLeft: 3 }]}>Save</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                <HideIcon name='eye-off' /><Text style={[Colors.black, { marginLeft: 3 }]}>Hide</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                <ReportIcon name='exclamationcircleo' />
-                <Text style={[Colors.black, { marginLeft: 3 }]}>Report</Text>
-              </TouchableOpacity>
-            </View>
-          )} */}
-
-
-
           {/* share modal */}
           <Modal backdropOpacity={0.2} isVisible={alert} animationIn={'bounceIn'} animationOut={'bounceOut'}>
             <View style={{ backgroundColor: Colors.black, borderRadius: 10, padding: 20 }}>
@@ -647,14 +615,7 @@ const Home = ({ navigation, }) => {
           </View>
 
 
-          {/* <FlatList
-          data={}
-          renderItem={()=>{
-            return()
-          }}
-          
-          /> */}
-
+  
         </View>
       </Modal>
     </ImageBackground>
