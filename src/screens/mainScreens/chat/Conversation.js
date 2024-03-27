@@ -17,7 +17,7 @@ const Conversation = ({ navigation, route }) => {
     const [message, setmessage] = useState()
     const [data, setData] = useState([])
     const [isTyping, setTyping] = useState(false)
-    const { FriendData,isOnline } = route.params
+    const { FriendData, isOnline } = route.params
     const CurrentUserData = useSelector(state => state?.Data?.data)
     const token = useSelector(state => state?.Data?.token)
 
@@ -124,36 +124,36 @@ const Conversation = ({ navigation, route }) => {
                     />
                 </TouchableOpacity>
 
-                <Image source={{ uri: `${Profile_Image_Base_Url}${FriendData.Profile_Picture}` }} style={{ height: 40, width:40, borderRadius: 200, marginLeft: 20 }} />
-                <View style={{marginLeft:0, justifyContent:'center'}}>
+                <Image source={{ uri: `${Profile_Image_Base_Url}${FriendData.Profile_Picture}` }} style={{ height: 40, width: 40, borderRadius: 200, marginLeft: 20 }} />
+                <View style={{ marginLeft: 0, justifyContent: 'center' }}>
 
-                <Text style={{ marginLeft: 10, fontSize: 20, fontWeight: 'bold', color: Colors.white }}>{FriendData.name}</Text>
-                {
-                    isOnline == true ?
+                    <Text style={{ marginLeft: 10, fontSize: 20, fontWeight: 'bold', color: Colors.white }}>{FriendData.name}</Text>
+                    {
+                        isOnline == true ?
 
-                    <Text style={{marginLeft:10, color:Colors.white}}>Online</Text>
-                    :
-                    <Text style={{marginLeft:10, color:Colors.white}}>Offline</Text>
-                }
+                            <Text style={{ marginLeft: 10, color: Colors.white }}>Online</Text>
+                            :
+                            <Text style={{ marginLeft: 10, color: Colors.white }}>Offline</Text>
+                    }
                 </View>
             </View>
 
             <View style={{ flex: 1, paddingHorizontal: 10 }}>
 
                 <FlatList
-            data={[...data].reverse()}
+                    data={[...data].reverse()}
                     inverted
                     renderItem={({ item }) => {
                         const timeStamp = item.timestamp
 
-                        const utcTime = moment.utc(timeStamp).local() 
+                        const utcTime = moment.utc(timeStamp).local()
                         const amPM = utcTime.format('hh:mm A')
-                        
-                    
+
+
                         return (
-                            <View style={{ maxWidth:'70%', backgroundColor: 'red', alignSelf: item.receiver == FriendData._id ? 'flex-start' : 'flex-end', padding: 10, marginTop: 10, borderRadius: 10, backgroundColor: item.receiver == FriendData._id ? Colors.red : Colors.white }}>
-                                <Text style={{ color:  item.receiver == FriendData._id ? Colors.white: Colors.black }}>{item.text}</Text>
-                                <Text style={{color: item.receiver == FriendData._id ? Colors.white: Colors.black, fontSize:10, alignSelf:'flex-end', marginLeft:50}}>{amPM}</Text>
+                            <View style={{ maxWidth: '70%', backgroundColor: 'red', alignSelf: item.receiver == FriendData._id ? 'flex-start' : 'flex-end', padding: 10, marginTop: 10, borderRadius: 10, backgroundColor: item.receiver == FriendData._id ? Colors.red : Colors.white }}>
+                                <Text style={{ color: item.receiver == FriendData._id ? Colors.white : Colors.black }}>{item.text}</Text>
+                                <Text style={{ color: item.receiver == FriendData._id ? Colors.white : Colors.black, fontSize: 10, alignSelf: 'flex-end', marginLeft: 50 }}>{amPM}</Text>
                             </View>
                         )
                     }}
@@ -164,7 +164,7 @@ const Conversation = ({ navigation, route }) => {
                 <TextInput
                     placeholder='Type here'
                     placeholderTextColor={Colors.white}
-                    style={{ height: 50, width: '80%', borderWidth: 1, borderRadius: 10, paddingHorizontal: 10, borderColor:Colors.white }}
+                    style={{ height: 50, width: '80%', borderWidth: 1, borderRadius: 10, paddingHorizontal: 10, borderColor: Colors.white }}
                     onChangeText={(txt) => {
                         setmessage(txt)
                         setTyping(true)

@@ -23,6 +23,7 @@ import Modal from 'react-native-modal'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import * as Animatable from 'react-native-animatable';
 import ImageView from "react-native-image-viewing";
+import Post from '../../components/PostCard/Post'
 
 const Profile = ({ navigation }) => {
 
@@ -251,6 +252,13 @@ const Profile = ({ navigation }) => {
   const renderItem = ({ item }) => {
 
     // console.log("posttttd data",item.Post_Like)
+
+
+
+    return (
+      <Post item={item} postReaction={postReaction} reactionshowing={reactionshowing} navigation={navigation} setPostReaction={(txt) => setPostReaction(txt)} />
+
+  )
 
     const getTime = new Date(item.createdAt).getTime()
 

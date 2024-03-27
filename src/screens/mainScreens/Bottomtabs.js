@@ -32,6 +32,7 @@ import Conversation from './chat/Conversation';
 import { useSelector } from 'react-redux';
 import socketServices from '../../socket/Socket_Service';
 import FindFriends from './StackScreens/FindFriends';
+import PageDetail from './StackScreens/Pages/PageDetail';
 const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -63,6 +64,8 @@ function Bottomtabs() {
 
                 <Stack.Screen name="ChatList" component={ChatList} />
                 <Stack.Screen name="Conversation" component={Conversation} />
+
+                <Stack.Screen name="PageDetail" component={PageDetail} />
 
             </Stack.Navigator>
         </SafeAreaView>
